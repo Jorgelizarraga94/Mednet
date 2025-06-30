@@ -1,6 +1,6 @@
-package med.net.api.Medico;
+package med.net.api.domain.Medico;
 
-import med.net.api.Direccion.DatosDireccion;
+import med.net.api.domain.Direccion.DatosDireccion;
 
 public record DatosActualizacionMedico(
         Long id,

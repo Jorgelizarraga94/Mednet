@@ -2,11 +2,12 @@ package med.net.api.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import med.net.api.Paciente.*;
+import med.net.api.domain.Paciente.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,22 +22,34 @@ public class PacienteController {
     public void registrarPaciente(@RequestBody @Valid DatosRegistroPaciente datos) {
         repository.save(new Paciente(datos));
     }
+
     @GetMapping
-    public Page<DatosListaPaciente> listarPaciente(@PageableDefault(size=10, sort = "nombre") Pageable pageable){
-        return repository.findByActivoTrue(pageable).map(DatosListaPaciente::new);
+    public ResponseEntity<Page<DatosListaPaciente>> listarPaciente(@PageableDefault(size=10, sort = "nombre") Pageable pageable){
+        var page = repository.findByActivoTrue(pageable).map(DatosListaPaciente::new);
+        return ResponseEntity.ok(page);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity listarPacientePorId(@PathVariable Long id){
+        Paciente paciente = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DatosDetallePaciente(paciente));
     }
 
     @Transactional
     @PutMapping
-    public void actualizarPaciente(@RequestBody @Valid DatosActualizacionPaciente datos){
+    public ResponseEntity actualizarPaciente(@RequestBody @Valid DatosActualizacionPaciente datos){
         Paciente paciente = repository.getReferenceById(datos.id());
         paciente.actualizarPaciente(datos);
+
+        return ResponseEntity.ok(new DatosDetallePaciente(paciente));
     }
 
     @Transactional
     @DeleteMapping("/{id}")
-    public void eliminarPaciente(@PathVariable Long id){
+    public ResponseEntity eliminarPaciente(@PathVariable Long id){
         Paciente paciente = repository.getReferenceById(id);
         paciente.eliminarPaciente();
+
+        return ResponseEntity.noContent().build(); //Devuelve un codigo 204 luego de la eliminacion
     }
 }

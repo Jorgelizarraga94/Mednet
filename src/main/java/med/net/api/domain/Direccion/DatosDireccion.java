@@ -1,4 +1,4 @@
-package med.net.api.Direccion;
+package med.net.api.domain.Direccion;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

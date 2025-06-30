@@ -1,4 +1,4 @@
-package med.net.api.Direccion;
+package med.net.api.domain.Direccion;
 
 import jakarta.persistence.Embeddable;
 import jakarta.validation.Valid;
@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import med.net.api.Medico.DatosActualizacionMedico;
 
 @Embeddable
 @Setter @Getter

@@ -1,11 +1,11 @@
-package med.net.api.Paciente;
+package med.net.api.domain.Paciente;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.net.api.Direccion.Direccion;
+import med.net.api.domain.Direccion.Direccion;
 
 @Getter
 @EqualsAndHashCode(of = "id")
@@ -34,6 +34,34 @@ public class Paciente {
         this.telefono = datos.telefono();
         this.documento_identidad = datos.documento_identidad();
         this.direccion = new Direccion(datos.direccion());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDocumento_identidad() {
+        return documento_identidad;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
     }
 
     public void actualizarPaciente(DatosActualizacionPaciente datos) {

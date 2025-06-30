@@ -1,12 +1,9 @@
-package med.net.api.Medico;
+package med.net.api.domain.Medico;
 
-import com.fasterxml.jackson.databind.annotation.EnumNaming;
-import jakarta.annotation.Generated;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.*;
-import med.net.api.Direccion.DatosDireccion;
-import med.net.api.Direccion.Direccion;
+import med.net.api.domain.Direccion.Direccion;
 
 @Table(name="medicos")
 @Entity(name="medico")

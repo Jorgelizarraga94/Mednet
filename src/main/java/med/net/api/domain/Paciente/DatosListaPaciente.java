@@ -1,6 +1,4 @@
-package med.net.api.Paciente;
-
-import med.net.api.Medico.Especialidad;
+package med.net.api.domain.Paciente;
 
 public record DatosListaPaciente(
         String nombre,
