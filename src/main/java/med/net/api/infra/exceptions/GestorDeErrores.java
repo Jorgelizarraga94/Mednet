@@ -1,7 +1,6 @@
-package med.net.api.infra;
+package med.net.api.infra.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
