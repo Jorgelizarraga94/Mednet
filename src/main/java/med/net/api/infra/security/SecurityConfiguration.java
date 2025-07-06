@@ -27,6 +27,7 @@ public class SecurityConfiguration {
                 .sessionManagement(sm-> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> {
                     request.requestMatchers(HttpMethod.POST, "/login").permitAll();
+                    request.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
                     request.anyRequest().authenticated();
                 })
                 //Le damos la instruccion de aplicar primero nuestro filter, y luego el filter de spring generado en  la linea 28 automaticamente

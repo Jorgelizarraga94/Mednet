@@ -11,8 +11,8 @@ import med.net.api.domain.Direccion.Direccion;
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Paciente")
 @Table(name = "pacientes")
+@Entity(name = "paciente")
 public class Paciente {
 
     @Id
