@@ -37,8 +37,8 @@ Permite registrar cursos y gestionar tópicos (temas de discusión) relacionados
    ./mvnw spring-boot:run
 
 4. Flyway creará automáticamente las tablas a partir de los scripts ubicados en `resources/db.migration`.
-
-5. Testea los endpoints usando Postman.
+5. Cree un login y contraseña del mismo mediante sql
+6. Testea los endpoints usando Postman.
 
 ---
 
